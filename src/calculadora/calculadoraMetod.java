@@ -4,17 +4,19 @@ import java.util.Scanner;
 
 public class calculadoraMetod {
     static Scanner sc = new Scanner(System.in);
-    private static boolean repeticion;
-    private double num1;
-    private double num2;
-    private char operacion;
-int contador = 0;
+/*
     public static void main(String[] args) {
-
+      boolean repeticion = false;
 // cargamos el menu
         do {
+char opcion = menu();
+selector(opcion);
+            System.out.println("Quieres seguir haciendo ejercicios? (s/n)"){
+            if (sc.next().toLowerCase().charAt(0) == 'n'){
+                repeticion = true;
 
-        } while (repeticion == true);
+            }
+        } while (!repeticion);
 
         //pasamos lo que devuelve el menu al selector
         //hacemos operaciones
@@ -26,45 +28,34 @@ int contador = 0;
 
 // pedirNumero devuelve double
 
-    public double pedirNumero() {
-        if (contador == 0){
-            System.out.println("Introduzca el primer numero: ");
-        this.num1 = sc.nextDouble();
+    public static double pedirNumero() {
+            System.out.println("Introduzca un numero: ");
+        double num = sc.nextDouble();
         sc.nextLine();
-        contador++;
-        return num1;
-        } else {
-            System.out.println("¿Porque numero lo quiere " + operacion + " : ");
-            this.num2 = sc.nextDouble();
-            sc.nextLine();
-            return num2;
-        }
+        return num;
     }
 
     // menu -> devuelve char
-    public char menu() {
-
+    public static char menu() {
         System.out.println("¿Qué operación quiere realizar?: ");
-        this.operacion = sc.next().charAt(0);
-        pedirNumero();
-        pedirNumero();
+        char operacion = sc.next().charAt(0);
         return operacion;
     }
 
     // selector, recibe un char y llama a los metodos correspondientes (suma,resta,multiplicacion,division)
-    public void selector(char operacion){
+    public static void selector(char operacion){
         switch (operacion){
             case '+':
-                System.out.println(suma());
+                System.out.println(suma(pedirNumero(), pedirNumero()));
                 break;
             case '-':
-                System.out.println(resta());
+                System.out.println(resta(pedirNumero(),pedirNumero()));
                 break;
             case '*':
-                System.out.println(multiplicacion());
+                System.out.println(multiplicacion(pedirNumero(), pedirNumero()));
                 break;
             case '/':
-                System.out.println(division());
+                System.out.println(division(pedirNumero(), pedirNumero()));
                 break;
 
         }
@@ -72,29 +63,27 @@ int contador = 0;
     }
 
     //suma
-    public double suma() {
-        double resultado = this.num1 + this.num2;
-        return resultado;
-    }
+    public static double suma(boolean a, boolean b) {
+        return a + b;
+            }
 
     //resta
 
-    public double resta() {
-        double resultado = this.num1 - this.num2;
-        return resultado;
+    public static double resta(boolean a, boolean b) {
+
+        return a - b;
     }
 
     //multiplicacion
-    public double multiplicacion() {
-        double resultado = this.num1 * this.num2;
-        return resultado;
+    public static double multiplicacion(boolean a, boolean b) {
+        return a * b;
+
     }
 
     //division
 
-    public double division() {
-        double resultado = this.num1 / this.num2;
-        return resultado;
+    public double division(boolean a, boolean b) {
+        return a / b;
 }
-
+*/
 }
