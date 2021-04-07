@@ -15,6 +15,7 @@ public class Incorporeo extends Ser {
         this.bondad = (Math.random()*10);
     }
 
+
     // Getter and Setters
     public double getFe() {
         return fe;
@@ -49,6 +50,14 @@ public class Incorporeo extends Ser {
     }
 
     public double engañar (Humano humano){
+        return ((humano.getFe() / this.getFe())*((humano.getBondad()-humano.getMaldad())/this.getFe()));
+    }
+
+    public double seducir (Humano humano) {
+        return Math.sqrt((Math.pow(-getBondad(),2)+(Math.pow(getMaldad(),2)))/((Math.pow(getFe(),2))-(Math.pow(getBondad(),2))));
+    }
+
+    public double tentar (Humano humano) {
         return 0;
     }
 
@@ -64,12 +73,8 @@ public class Incorporeo extends Ser {
         return 0;
     }
 
-    public double seducir (Humano humano) {
-        return 0;
-    }
 
-    public double tentar (Humano humano) {
-        return 0;
-    }
+
+
 
 }

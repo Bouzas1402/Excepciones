@@ -11,6 +11,8 @@ Humano h = new Humano();
 
         System.out.println(String.format(h.toString()));
 
+        Demonios d = new Demonios();
+        System.out.println(d.toString());
 
     }
 }

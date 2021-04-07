@@ -12,8 +12,14 @@ public class Angeles extends Incorporeo implements Espiritual {
         System.out.printf("Maldad: %.2f", getMaldad());
     }
 
+
+
     public boolean rezar(){
-        Random rd = new Random();
-        return rd.nextBoolean();
+        return true;
     }
+
+    public double seducir(Humano humano){
+        return 0;
+    }
+
 }

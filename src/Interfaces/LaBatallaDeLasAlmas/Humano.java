@@ -17,6 +17,46 @@ private double alma;
         this.alma = Math.random()*1000;
     }
 
+    public double getInteligencia() {
+        return inteligencia;
+    }
+
+    public void setInteligencia(double inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public double getFe() {
+        return fe;
+    }
+
+    public void setFe(double fe) {
+        this.fe = fe;
+    }
+
+    public double getMaldad() {
+        return maldad;
+    }
+
+    public void setMaldad(double maldad) {
+        this.maldad = maldad;
+    }
+
+    public double getBondad() {
+        return bondad;
+    }
+
+    public void setBondad(double bondad) {
+        this.bondad = bondad;
+    }
+
+    public double getAlma() {
+        return alma;
+    }
+
+    public void setAlma(double alma) {
+        this.alma = alma;
+    }
+
     public void conflictoMoral (Angeles a, Demonios d){}
 
     public double golpear (Incorporeo s, int habilidad){
@@ -26,8 +66,7 @@ private double alma;
     @Override
     public boolean rezar() {
         if (fe > 50 || bondad > 60) {
-            Random rd = new Random();
-            return rd.nextBoolean();
+            return true;
         } else {
             return false;
         }
@@ -35,8 +74,6 @@ private double alma;
 
     @Override
     public String toString() {
-        String c = "Humano { + inteligencia= %.2f" + "%.2f" + inteligencia;
-        String d;
         String cadena = "Humano{" +
                 "inteligencia=" + inteligencia +
                 ", fe=" + fe +
@@ -44,7 +81,7 @@ private double alma;
                 ", bondad=" + bondad +
                 ", alma=" + alma +
                 '}';
-   return c;
+   return cadena;
     }
 
 }

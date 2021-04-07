@@ -9,8 +9,17 @@ public class Demonios extends Incorporeo implements Espiritual {
     }
 
     public boolean rezar(){
-        Random rd = new Random();
-        return rd.nextBoolean();
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Incorporeo{" +
+                "fe=" + this.getFe() +
+                ", maldad=" + getMaldad() +
+                ", bondad=" + getBondad() +
+                '}';
     }
 
 }
+
