@@ -1,0 +1,104 @@
+En powerShell vamos a intentar hacer esta estructura de carpetas mediante comandos
+de manera mas sencilla.
+
+1. Lo primero es saber la ruta en la que estoy ahora mismo
+
+-PowerShell cd:
+PS C:\Users\daw1_a> cd .\IdeaProjects\
+PS C:\Users\daw1_a\IdeaProjects> cd ..
+PS C:\Users\daw1_a> cd ..\..
+PS C:\> cd
+PS C:\> ls
+
+
+    Directorio: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        02/06/2017     11:51                eclipse
+d-----        01/10/2020     16:38                Intel
+d-----        23/03/2021     11:46                oraclexe
+d-----        07/12/2019     10:14                PerfLogs
+d-----        22/10/2019      9:41                PracticasArrays
+d-r---        25/01/2021     16:30                Program Files
+d-r---        09/04/2021      8:36                Program Files (x86)
+d-----        16/06/2017      7:52                SDK
+d-----        09/06/2017     10:13                software
+d-----        06/04/2021     21:01                tools
+d-----        03/03/2021     19:50                UML2JAVABIBLIOTECA
+d-r---        09/03/2021     11:24                Users
+d-----        23/03/2021     11:39                Windows
+d-----        17/06/2020     10:14                Windows10Upgrade
+
+
+PS C:\> cd .\Users\daw1_a\IdeaProjects\
+PS C:\Users\daw1_a\IdeaProjects>
+PS C:\Users\daw1_a\IdeaProjects\Ficheros> mkdir Quevedo1, Quevedo1\DAM, Quevedo1\DAW
+
+
+    Directorio: C:\Users\daw1_a\IdeaProjects\Ficheros
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        09/04/2021     16:30                Quevedo1
+
+
+    Directorio: C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        09/04/2021     16:30                DAM
+d-----        09/04/2021     16:30                DAW
+
+
+PS C:\Users\daw1_a\IdeaProjects\Ficheros> cd .\Quevedo1
+
+PS C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1> mkdir .\SMR\LDM, .\SMR\FOL, .\SMR\SSII, .\SMR\Programacion, .\SMR\Entornos, .\SMR\BBDD
+
+
+    Directorio: C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1\SMR
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        09/04/2021     16:44                LDM
+d-----        09/04/2021     16:44                FOL
+d-----        09/04/2021     16:44                SSII
+d-----        09/04/2021     16:44                Programacion
+d-----        09/04/2021     16:44                Entornos
+d-----        09/04/2021     16:44                BBDD
+
+
+PS C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1> mkdir .\DAW\LDM, .\DAW\FOL, .\DAW\SSII, .\DAW\Programacion, .\DAW\Entornos, .\DAW\BBDD
+
+
+    Directorio: C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1\DAW
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        09/04/2021     16:44                LDM
+d-----        09/04/2021     16:44                FOL
+d-----        09/04/2021     16:44                SSII
+d-----        09/04/2021     16:44                Programacion
+d-----        09/04/2021     16:44                Entornos
+d-----        09/04/2021     16:44                BBDD
+
+
+PS C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1> mkdir .\DAM\LDM, .\DAM\FOL, .\DAM\SSII, .\DAM\Programacion, .\DAM\Entornos, .\DAM\BBDD
+
+
+    Directorio: C:\Users\daw1_a\IdeaProjects\Ficheros\Quevedo1\DAM
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        09/04/2021     16:44                LDM
+d-----        09/04/2021     16:44                FOL
+d-----        09/04/2021     16:44                SSII
+d-----        09/04/2021     16:44                Programacion
+d-----        09/04/2021     16:44                Entornos
+d-----        09/04/2021     16:44                BBDD

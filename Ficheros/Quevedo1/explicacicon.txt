@@ -1,0 +1,6 @@
+En powerShell vamos a intentar hacer esta estructura de carpetas mediante comandos
+de manera mas sencilla.
+
+1. Lo primero es saber la ruta en la que estoy ahora mismo
+
+-
