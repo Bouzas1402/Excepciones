@@ -185,22 +185,28 @@ String saldoTotal = "Saldo total de la cuenta: " + String.valueOf((cuenta.getSal
 }
 
 public void bloquearCuenta (Cuenta cuenta) {
-        if (cuenta.isBloqueada() == false) {
-            cuenta.setBloqueada(true);
-            String raizBloqueados = "\\" + cuenta.sacarCodigoBanco(cuenta.getIban()) + "\\" + cuenta.sacarCodigoSucursal(cuenta.getIban()) + "\\Bloqueados";
-            File bloqueados = new File(raizBloqueados);
-            boolean VoF = bloqueados.mkdirs();
-            if (VoF == true){
-                    System.out.println("Se creo correctamente.");
-                } else {
-                    System.out.println("No se creo.");
-                }
-            String rutaCuenta = "\\" + cuenta.sacarCodigoBanco(cuenta.getIban() + "\\" + cuenta.sacarCodigoSucursal(cuenta.getIban()) + "\\" + cuenta.sacarCodigo(cuenta.getIban()));
-File cambioCuenta = new File (rutaCuenta);
-boolean mover = cambioCuenta.renameTo(new File(raizBloqueados + "\\" + cuenta.sacarCodigo(cuenta.getIban())));
-            }
+    if (cuenta.isBloqueada() == false) {
+        cuenta.setBloqueada(true);
+        String raizBloqueados = "Bancoss\\" + this.entidad + "\\" + this.oficina + "\\Bloqueados";
+        File bloqueados = new File(raizBloqueados);
+        boolean VoF = bloqueados.mkdirs();
+        if (VoF == true) {
+            System.out.println("Se creo correctamente.");
+        } else {
+            System.out.println("No se creo.");
         }
+        String rutaCuenta = "Bancoss\\" + this.entidad + "\\" + this.oficina + "\\" + cuenta.sacarCodigo(cuenta.getIban());
+        File cambioCuenta = new File(rutaCuenta);
+        boolean mover = cambioCuenta.renameTo(new File(raizBloqueados + "\\" + cuenta.sacarCodigo(cuenta.getIban())));
+        if (mover) {
+            System.out.println("Se movio el directorio");
+        } else {
+            System.out.println("No se movio el directorio");
+        }
+    }
 
+
+}
 }
 
 

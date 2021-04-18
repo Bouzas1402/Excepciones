@@ -3,8 +3,10 @@ package TiposDeExcepciones;
 public class General {
     public static void main(String[] args) {
        // Gestionar la excepcion;
-       // coger la parte del codigo que creo que puede dar problemas y lo metemos dentro del bloque try catch (Traduccion; intenta hacer esto)
-            try {
+       // coger la parte del codigo que creo que puede dar problemas y lo metemos dentro del bloque try-catch (Traduccion; intenta hacer esto)
+
+
+        try {
                 // ArithmeticException
 // el caso mas tipico es cuando intentamos dividir por 0, son aquellos que no son correctos matematicamente
 /* int a = 10;
@@ -28,10 +30,10 @@ public class General {
 
                 // ArrayIndexOutOfBoundsException
 // Eso es que te sales del array
-                int[] x = new int[5];
-                for (int i = 0; i < 10; i++) {
-                    x[i] = i + 1;
-                }
+            int[] x = new int[5];
+            for (int i = 0; i < 10; i++) {
+                x[i] = i + 1;
+            }
 
 
                 //...
@@ -57,6 +59,8 @@ public class General {
                 System.out.println("Excepción no prevista: " + e.getMessage());
                 // e.printStackTrace();
             }
+
+
 
         }
     }
