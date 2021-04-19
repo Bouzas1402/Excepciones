@@ -39,7 +39,7 @@ public class Cuenta {
     }
 
 public String crearRuta(String iban) {
-    String ruta = "Bancoss\\" + sacarCodigoBanco(iban) + "\\" + sacarCodigoSucursal(iban) + "\\" + sacarCodigo(iban);
+    String ruta = "Bancos\\" + sacarCodigoBanco(iban) + "\\" + sacarCodigoSucursal(iban) + "\\" + sacarCodigo(iban);
     File carpetaCuenta = new File(ruta);
     boolean directorioCreado = carpetaCuenta.mkdirs();
     if (directorioCreado) {

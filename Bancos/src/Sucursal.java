@@ -18,7 +18,7 @@ public class Sucursal {
         this.cuentas = cuentas;
         this.entidad = entidad;
         this.oficina = oficina;
-File d1 = new File("\\Bancoss" + entidad + "\\" + oficina);
+File d1 = new File("\\Bancos" + entidad + "\\" + oficina);
 boolean d1Creado = d1.mkdirs();
 if (d1Creado){
     System.out.println("El directorio a sido creado.");
@@ -187,7 +187,7 @@ String saldoTotal = "Saldo total de la cuenta: " + String.valueOf((cuenta.getSal
 public void bloquearCuenta (Cuenta cuenta) {
     if (cuenta.isBloqueada() == false) {
         cuenta.setBloqueada(true);
-        String raizBloqueados = "Bancoss\\" + this.entidad + "\\" + this.oficina + "\\Bloqueados";
+        String raizBloqueados = "Bancos\\" + this.entidad + "\\" + this.oficina + "\\Bloqueados";
         File bloqueados = new File(raizBloqueados);
         boolean VoF = bloqueados.mkdirs();
         if (VoF == true) {
@@ -195,7 +195,7 @@ public void bloquearCuenta (Cuenta cuenta) {
         } else {
             System.out.println("No se creo.");
         }
-        String rutaCuenta = "Bancoss\\" + this.entidad + "\\" + this.oficina + "\\" + cuenta.sacarCodigo(cuenta.getIban());
+        String rutaCuenta = "Bancos\\" + this.entidad + "\\" + this.oficina + "\\" + cuenta.sacarCodigo(cuenta.getIban());
         File cambioCuenta = new File(rutaCuenta);
         boolean mover = cambioCuenta.renameTo(new File(raizBloqueados + "\\" + cuenta.sacarCodigo(cuenta.getIban())));
         if (mover) {
