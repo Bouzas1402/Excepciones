@@ -78,7 +78,7 @@ public void escribirMovimiento(String iban, String texto){
          PrintWriter escribir = new PrintWriter(f1);
 escribir.println(texto);
     } catch (IOException e) {
-        e.printStackTrace();
+        System.out.println("Excepcion de E/S: " + e.getMessage());
     }
 }
 

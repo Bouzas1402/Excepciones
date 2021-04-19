@@ -171,13 +171,12 @@ public void generarExtracto (Cuenta cuenta){
     String saldoPositivoExtracto = "Los ingresos totales han sido: " + String.valueOf(saldoPositivo);
     String saldoNegativoExtracto = "Los reintegros totales han sido: " + String.valueOf(saldoNegativo);
 String saldoTotal = "Saldo total de la cuenta: " + String.valueOf((cuenta.getSaldo()));
-    try (FileWriter f1 = new FileWriter(x,true);) {
-        PrintWriter escribir = new PrintWriter(f1);
-        escribir.println(nombreTitular);
-        escribir.println(ibanCuenta);
-        escribir.println(saldoPositivoExtracto);
-        escribir.println(saldoNegativoExtracto);
-        escribir.println(saldoTotal);
+    try (FileWriter f1 = new FileWriter(x,true);) { //en clase lo han hecho sin printWriter, poniendo una \n a la impresion de cada linea
+        f1.write(nombreTitular + "\n");
+        f1.write(ibanCuenta + "\n");
+        f1.write(saldoPositivoExtracto + "\n");
+        f1.write(saldoNegativoExtracto + "\n");
+        f1.write(saldoTotal + "\n");
     } catch (IOException e) {
         e.printStackTrace();
     }
