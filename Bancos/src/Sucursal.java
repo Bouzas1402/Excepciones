@@ -26,7 +26,7 @@ if (d1Creado){
     System.out.println("El directorio ya existe o se creo correctamente.");
 }
     }
-
+// getters, los atributos no se podran modificar una vez creados.
     public String getEntidad() {
         return entidad;
     }
@@ -100,7 +100,7 @@ if (d1Creado){
 //Cada vez que se retira dinero de una cuenta, se anota el movimiento
 //correspondiente en el fichero movimientos.txt dentro de la carpeta
 //cuentas\numero_de_cuenta (si alguna de las carpetas no existe, hay que crearla)
-    public double retirar(Cuenta cuenta, double cantidad) {
+    public static double retirar(Cuenta cuenta, double cantidad) {
         if (cuenta.isBloqueada() == false) {
             if (cantidad <= cuenta.getSaldo()) {
                 cuenta.setSaldo(cuenta.getSaldo() - cantidad);
@@ -120,7 +120,7 @@ if (d1Creado){
     //Cada vez que se ingresa dinero de una cuenta, se anota el movimiento
     //correspondiente en el fichero movimientos.txt dentro de la carpeta
     //cuentas\numero_de_cuenta (si alguna de las carpetas no existe, hay que crearla)
-    public double ingresar(Cuenta cuenta, double cantidad) {
+    public static double ingresar(Cuenta cuenta, double cantidad) {
         if (cuenta.isBloqueada() == false) {
             cuenta.setSaldo(cuenta.getSaldo() + cantidad);
 cuenta.escribirMovimiento(cuenta.getIban(),String.valueOf(cantidad));
@@ -131,56 +131,33 @@ cuenta.escribirMovimiento(cuenta.getIban(),String.valueOf(cantidad));
 }
 
 public void generarExtracto (Cuenta cuenta){
-        String ruta = cuenta.crearRuta(cuenta.getIban());
+        String ruta = cuenta.crearRutaCuenta(cuenta.getIban());
         File extracto = new File(ruta + "\\Extracto.txt");
-        try {
-            boolean creado = extracto.createNewFile();
-        } catch (IOException e){
-            System.out.println("No se puede crear el archivo: " + extracto.getPath());
-        }
-        String nombreTitular = "Nombre del titular: " + cuenta.getTitular();
-        String ibanCuenta = "IBAN de la cuenta es: " + cuenta.getIban();
         double saldoPositivo = 0;
         double saldoNegativo = 0;
-    File x = new File(ruta + "\\Extracto.txt");
-   /*  try {
-
-        Scanner sc = new Scanner(x);
-
+String rutaMovimientos = ruta + "\\Movimientos.txt";
+File movimientos = new File(rutaMovimientos);
+try (Scanner sc = new Scanner(movimientos)) {
         while (sc.hasNext()) {
-            String saldo1 = sc.nextLine();
-            double saldo = Integer.parseInt(saldo1);
-            if (saldo < 0) {
-                saldoNegativo = saldoNegativo - saldo;                !!!!   Hace falta saber com sacar el valor de una linea de un archivo
+            double entero = Double.parseDouble(sc.nextLine());
+            if (entero < 0) {
+                saldoNegativo = saldoNegativo + entero;
             } else {
-                saldoPositivo = saldoPositivo + saldo;
+                saldoPositivo = saldoPositivo + entero;
             }
         }
-        for (int i = 0; i < x.length(); i++) {
-            String saldo1 = sc.nextLine();
-            double saldo = Integer.parseInt(saldo1);
-            if (saldo < 0) {
-                saldoNegativo = saldoNegativo - saldo;
-            } else {
-                saldoPositivo = saldoPositivo + saldo;
-            }
-        }
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    }*/
-    String saldoPositivoExtracto = "Los ingresos totales han sido: " + String.valueOf(saldoPositivo);
-    String saldoNegativoExtracto = "Los reintegros totales han sido: " + String.valueOf(saldoNegativo);
-String saldoTotal = "Saldo total de la cuenta: " + String.valueOf((cuenta.getSaldo()));
-    try (FileWriter f1 = new FileWriter(x,true);) { //en clase lo han hecho sin printWriter, poniendo una \n a la impresion de cada linea
-        f1.write(nombreTitular + "\n");
-        f1.write(ibanCuenta + "\n");
-        f1.write(saldoPositivoExtracto + "\n");
-        f1.write(saldoNegativoExtracto + "\n");
-        f1.write(saldoTotal + "\n");
-    } catch (IOException e) {
-        e.printStackTrace();
+    }catch (Exception e){
+        System.out.println(e.toString());
     }
-
+   try (PrintWriter escribrir = new PrintWriter(extracto)) {
+       escribrir.println("Saldo total de la cuenta: " + cuenta.getSaldo());
+       escribrir.println("Nombre del titular: " + cuenta.getTitular());
+       escribrir.println("IBAN de la cuenta es: " + cuenta.getIban());
+       escribrir.println("Los ingresos totales han sido: " + (saldoPositivo));
+       escribrir.println("Los reintegros totales han sido: " + saldoNegativo);
+   } catch (IOException e) {
+       System.out.println("Se produce una excepcion %s" + e.getMessage());
+   }
 }
 
 public void bloquearCuenta (Cuenta cuenta) {
@@ -203,9 +180,56 @@ public void bloquearCuenta (Cuenta cuenta) {
             System.out.println("No se movio el directorio");
         }
     }
+}
+
+    public void eliminarCuenta(Cuenta cuenta){
+        if (cuenta.isBloqueada() == false) {
+            bloquearCuenta(cuenta);
+        }
+        String crearElminadas = "Bancos\\" + this.entidad + "\\" + this.oficina + "\\cuentas_eliminadas.txt";
+        try (FileWriter f1 = new FileWriter(crearElminadas,true);) {
+            PrintWriter escribir = new PrintWriter(f1);
+            escribir.println(cuenta.getIban());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File borrarCuenta =  new File("Bancos\\" + this.entidad + "\\" + this.oficina + "\\Bloqueados\\" + cuenta.sacarCodigo(cuenta.getIban()));
+        borrarRecursivamente(borrarCuenta);
+        this.cuentas.remove(this.cuentas.contains(cuenta));
+    }
+
+
+    public void borrarRecursivamente (File direccion){
+        try {
+            File[] hijos = direccion.listFiles();
+            for (File child : hijos) {
+                System.out.println("Nombre:" + child.getName());
+                if (child.isDirectory()) {
+                    borrarRecursivamente(child);
+                } else {
+                    if (child.delete()) {
+                        System.out.println("Se elimino correctamente.");
+                    } else {
+                        System.out.println("No se elimino");
+                    }
+                }
+            }
+        } catch (NullPointerException npe) {
+            System.out.println("Se produjo un error: " + npe.getMessage());
+        }
+        if (direccion.delete()) {
+            System.out.println("Nombre:" + direccion.getName());
+            System.out.println("Se elimino correctamente.");
+        } else {
+            System.out.println("No se elimino");
+        }
+
+    }
+
+
 
 
 }
-}
+
 
 
