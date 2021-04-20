@@ -74,6 +74,7 @@ public class Principal {
         sucursal0666.generarExtracto(cuenta144401);
         sucursal0666.bloquearCuenta(cuenta151501);
         sucursal0666.bloquearCuenta(cuenta066602);
+        Cajero.cajero(cuenta144401);
     }
 }
 

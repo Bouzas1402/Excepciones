@@ -13,11 +13,13 @@ Debe contener el método main */
             switch (opciones) {
                 case 1:
                     // Pedir cantidad y llamar al método.
+                    System.out.println("¿Cuanto dinero quieres ingresar?");
                     double cantidad = sc.nextInt();
                     Sucursal.ingresar(cuenta,cantidad);
                     break;
                 case 2:
                     // Pedir cantidad y llamar al método.
+                    System.out.println("¿Cuanto dinero quierer retirar?");
                     cantidad = sc.nextInt();
                     Sucursal.retirar(cuenta, cantidad);
                     break;
