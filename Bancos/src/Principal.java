@@ -4,54 +4,6 @@ import java.util.Scanner;
 public class Principal {
 
     public static void main(String[] args) {
-
-      // Sucursal s1 = new Sucursal("0985", "6789");
-
-      //  s1.crearCuenta("Carlos Bouzas", 5000);
-
-
-    //    s1.retirar(s1.getCuentas().get(0), 1000.00);
-
-
-
-
-  //      s1.generarExtracto(s1.getCuentas().get(0));
-
-//s1.bloquearCuenta(s1.getCuentas().get(0));
-
-
-        //s1.eliminarCuenta(s1.getCuentas().get(0));
-
- /*
-        double i;
-        double saldoNegativo = 0;
-        double saldoPositivo = 0;
-        double x1 = 0;
-        double y = 0;
-        String x = "Bancos\\0985\\6789\\Bloqueados\\2554616358\\Movimientos.txt";
-        File u = new File(x);
-
-
-        try (Scanner sc = new Scanner(u)) {
-
-        while (sc.hasNext()) {
-            double entero = Double.parseDouble(sc.nextLine());
-            if (entero < 0) {
-                saldoNegativo = saldoNegativo + entero;
-            } else {
-                saldoPositivo = saldoPositivo + entero;
-            }
-        }
-    }catch (Exception e){
-            System.out.println(e.toString());
-        }
-
-        System.out.println(saldoNegativo);
-        System.out.println(saldoPositivo);
-*/
-
-
-
         Sucursal sucursal1444 = new Sucursal("1210","1444");
         Sucursal sucursal1515 = new Sucursal("0049","1515");
         Sucursal sucursal0666 = new Sucursal("2085","0666");
@@ -64,7 +16,6 @@ public class Principal {
         Cuenta cuenta066601 = new Cuenta("Lucia Vega", "ES0020850666320000000001");
         Cuenta cuenta066602 = new Cuenta("Pablo Perez", "ES0020850666320000000002");
         Cuenta cuenta066603 = new Cuenta("Elena Herrero","ES0020850666320000000003");
-
         Sucursal.ingresar(cuenta144401,1000);
         Sucursal.retirar(cuenta144401,200);
         Sucursal.retirar(cuenta144401,100);
