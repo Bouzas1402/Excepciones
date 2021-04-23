@@ -117,8 +117,6 @@ public class Cuenta {
         System.out.println("El titular " + this.titular + " con número de cuenta "
                 + this.iban + " tiene un saldo de " + this.saldo + " euros.");
     }
-
-
     //Metodo para sacar rutas de cuentas a partir de un IBAN
     public String crearRutaCuenta(String iban) {
         String ruta = "Bancos\\" + sacarCodigoBanco(iban) + "\\" + sacarCodigoSucursal(iban) + "\\" + sacarCodigo(iban);
