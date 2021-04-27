@@ -41,6 +41,6 @@ public class Ejercicio4 {
     }
 
     public static void main(String[] args) throws IOException {
-        Ejercicio4.leerCSVSimple("D:\\Educa\\daw1_a\\Downloads\\EjerciciosFicheros\\Restaurantes.csv");
+        Ejercicio4.leerCSVSimple("Excepciones\\Ficheros\\src\\EjerciciosFicheros");
     }
 }

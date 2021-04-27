@@ -1,0 +1,4 @@
+Para la entrega, crear un paquete llamado EjerciciosFicheros,
+y dentro de él un fichero .java para cada ejercicio:
+Ejercicio1.java
+Ejercicio2.java, etc
