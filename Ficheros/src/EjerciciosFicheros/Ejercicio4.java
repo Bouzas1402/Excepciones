@@ -1,30 +1,35 @@
 package EjerciciosFicheros;
 import java.io.*;
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-public class Ejercicio4 {
-    public static final String SEPARATOR=",";
-    public static void leerCSVSimple(String path) throws IOException {
-File nuevoArchivoCSV = new File(path);
-        BufferedReader bufferLectura = new BufferedReader(new FileReader(path));
-        String linea = bufferLectura.readLine();
-        while (linea != null) {
-            String[] campos = linea.split(SEPARATOR);
-if (campos[4].equals("Zipcode") || campos[4].substring(0,1).equals("6")) {
-    String x = Arrays.toString(campos).replace("[","");
-    x = x.replace("]", "");
-try (FileWriter escribir = new FileWriter(nuevoArchivoCSV, true)){
-escribir.write(x + "\n");
-} catch (IOException e){
-    System.out.println("Se produce una excepcion %s" + e.getMessage());
-}
+import java.util.ArrayList;
 
-}
-            linea = bufferLectura.readLine();
+import java.util.Scanner;
+public class Ejercicio4 {
+    //Partiendo del fichero de csv de ejemplo, crear un programa de Java que cree una copia de ese fichero llamada
+    // “Restaurants2.csv” que contenga los mismos datos excepto aquellos correspondientes a los restaurantes cuyo
+    // código postal empieza por 6.
+    public static void leerCSVSimple(String path) throws IOException {
+        ArrayList<String> x1 = new ArrayList<>();
+        File nuevoArchivoCSV = new File(path);
+        File x = new File(path);
+        try (Scanner sc = new Scanner(nuevoArchivoCSV)) {
+            while (sc.hasNext()) {
+                x1.add(sc.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encuentra ningun archivo: " + e.getMessage());
         }
-        if (bufferLectura != null) {
-            bufferLectura.close();
+        try (FileWriter escribir = new FileWriter(x, true)) {
+            for (int i = 0; i < x1.size(); i++) {
+                String[] y = x1.get(i).split(",");
+                if (y[4].substring(0, 1).equals("6")) {
+                    for (int j = 0; j < y.length; j++) {
+                        escribir.write( y[j] + ",");
+                    }
+                    escribir.write("\n");
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Se produce una excepcion %s" + e.getMessage());
         }
     }
 }
